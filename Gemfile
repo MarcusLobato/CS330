@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use ActiveStorage variant
 group :production do
-  gem 'pg', '~> 0.21' #for Heroku deployment
+  gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
 # gem 'mini_magick', '~> 4.8'
