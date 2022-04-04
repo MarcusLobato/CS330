@@ -1,2 +1,21 @@
-https://gist.githubusercontent.com/tghastings/ccd50c3351076bf81cb236d5ff29a64e/raw/ae4bab043
-1e0269cea645cb86d766c9020ec81b2/config.yml
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: 'tghastings/code-esaas'
+    steps:
+      - checkout
+      - run:
+          name: rspec
+          command: bundle install && bundle exec rake db:migrate RAILS_ENV=test && bundle exec rspec
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    jobs:
+      - build
